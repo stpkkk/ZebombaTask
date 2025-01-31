@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.background {
+  background: url(./images/bg.png);
+  width: 980px;
+  height: 630px;
+  position: relative;
+}
+
+.map {
+  width: 980px;
+  height: 630px;
+  background: url('./images/map.png');
+}
+
+.moveButton {
+  font-size: 2rem;
+  width: 202px;
+  height: 63px;
+  background: url('./images/buttons/to-university.png');
+  color: #fff;
+  text-transform: uppercase;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.character {
+  background: url('./images/character.png');
+  height: 75px;
+  width: 35px;
+  z-index: 10;
+  position: absolute;
+}
