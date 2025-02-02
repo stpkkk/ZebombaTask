@@ -40,6 +40,7 @@ button {
   text-transform: uppercase;
 }
 
+/* Character */
 .character {
   background: url('./images/character.png');
   height: var(--character-height);
@@ -52,7 +53,7 @@ button {
   top: -66px;
   left: 40px;
   offset-rotate: 0deg;
-  transition: offset-distance 2s;
+  transition: offset-distance 1s;
   offset-distance: 0%;
 }
 
@@ -99,21 +100,58 @@ button {
   padding: 0 7px;
 }
 
-.friends {
+/* Slider */
+.slider-container {
   position: relative;
+  background: url('./images/friends-block.png');
   width: 536px;
   height: 63px;
-  background: url(./images/friends-block.png);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.friends .arrow-left {
+.slider-container .slider-overflow {
+  overflow: hidden;
+  width: 480px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+}
+
+.slider-container .slider {
+  display: flex;
+  align-items: center;
+  transition: transform 1s;
+}
+
+.slider-container .slider .add-to-friends {
   position: absolute;
+  right: -5px;
+  top: -5px;
+  width: 23px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.slider-container .slide {
+  position: relative;
+  height: 50px;
+  margin: 0 5px;
+}
+
+/* Slider control */
+.slider-container .slider-control {
+  position: absolute;
+  z-index: 3;
   top: 15px;
+  cursor: pointer;
+}
+
+.slider-container .slider-control.prev {
   left: 10px;
 }
 
-.friends .arrow-right {
-  position: absolute;
-  top: 15px;
+.slider-container .slider-control.next {
   right: 10px;
 }

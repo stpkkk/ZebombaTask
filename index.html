@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <script defer src="script.js"></script>
     <title>ZebombaGames</title>
+    <script defer type="module" src="main.js"></script>
   </head>
 
   <body>
@@ -13,25 +13,30 @@
       <div class="map">
         <div class="character"></div>
       </div>
+
       <div class="control">
-        <div class="friends">
-          <button class="arrow-left">
-            <img src="./images/buttons/arrow-left.png" alt="arrow-left" />
-          </button>
-          <div class="overflow">
-            <div class=""></div>
+        <div class="slider-container">
+          <div class="slider-control prev">
+            <img src="./images/buttons/arrow-left.png" alt="previous" />
           </div>
-          <button class="arrow-right">
-            <img src="./images/buttons/arrow-right.png" alt="arrow-right" />
-          </button>
+          <div class="slider-overflow">
+            <div class="slider"></div>
+          </div>
+          <div class="slider-control next">
+            <img src="./images/buttons/arrow-right.png" alt="next" />
+          </div>
         </div>
+
         <button class="chat">
           <img src="./images/buttons/chat.png" alt="chat" />
         </button>
+
         <button class="moveButton">В универ</button>
+
         <button class="mail">
           <img src="./images/buttons/mail.png" alt="mail" />
         </button>
+
         <button class="pedestal">
           <img src="./images/buttons/pedestal.png" alt="pedestal" />
         </button>
