@@ -3,24 +3,31 @@ import { domElements } from './domElements.js';
 export class Slider {
   constructor(data) {
     this.data = data;
-    this.sliderArray = this.initializeSliderArray();
     this.carouselPosition = 0;
     this.friendItemWidth = 60;
     this.visibleSlidesQuantity = 8;
+    this.sliderArray = this.createSliderArray();
     this.elements = domElements;
     this.init();
   }
 
-  initializeSliderArray() {
-    return [...this.data.rating.slice(0, 1), ...this.data.friends].concat(
-      Array.from({ length: 12 - this.data.friends.length - 1 }, (_, i) => ({
-        id: `empty-${i}`,
+  createSliderArray() {
+    const filledFriends = [
+      ...this.data.rating.slice(0, 1),
+      ...this.data.friends,
+    ];
+
+    while (filledFriends.length < 12) {
+      filledFriends.push({
+        id: `empty-${filledFriends.length}`,
         name: '',
         lastName: '',
         img: './images/empty.png',
         points: '',
-      }))
-    );
+      });
+    }
+
+    return filledFriends;
   }
 
   init() {
@@ -32,43 +39,39 @@ export class Slider {
     this.elements.sliderContainer.innerHTML = this.sliderArray
       .map(
         user => `
-      <div class="slide" title="${user.name} ${user.lastName}">
-        <img src="${user.img || './images/empty.png'}" alt="${user.name}">
-        ${
-          user.id &&
-          !user.id.startsWith('empty-') &&
-          !this.data.friends.some(e => e.id === user.id)
-            ? `<img class="add-to-friends" src="./images/buttons/plus.png">`
-            : ''
-        }
-      </div>
-    `
+        <div class="slider-item">
+          <img src="${user.img || './images/empty.png'}" alt="${
+          user.name || 'Empty Slot'
+        }">
+          ${
+            user.id.startsWith('empty-') ||
+            this.data.friends.some(e => e.id === user.id)
+              ? ''
+              : `<img class="add-to-friends" src="./images/buttons/plus.png" alt="Add to Friends">`
+          }
+        </div>
+      `
       )
       .join('');
-  }
-
-  nextSlide() {
-    this.carouselPosition =
-      (this.carouselPosition + 1) %
-      (this.sliderArray.length - this.visibleSlidesQuantity + 1);
-    this.updateSliderPosition();
-  }
-
-  prevSlide() {
-    this.carouselPosition =
-      (this.carouselPosition -
-        1 +
-        this.sliderArray.length -
-        this.visibleSlidesQuantity +
-        1) %
-      (this.sliderArray.length - this.visibleSlidesQuantity + 1);
-    this.updateSliderPosition();
   }
 
   updateSliderPosition() {
     this.elements.sliderContainer.style.transform = `translateX(-${
       this.carouselPosition * this.friendItemWidth
     }px)`;
+  }
+
+  nextSlide() {
+    const maxSlides = this.sliderArray.length - this.visibleSlidesQuantity;
+    this.carouselPosition = (this.carouselPosition + 1) % (maxSlides + 1);
+    this.updateSliderPosition();
+  }
+
+  prevSlide() {
+    const maxSlides = this.sliderArray.length - this.visibleSlidesQuantity;
+    this.carouselPosition =
+      (this.carouselPosition - 1 + maxSlides + 1) % (maxSlides + 1);
+    this.updateSliderPosition();
   }
 
   addEventListeners() {
