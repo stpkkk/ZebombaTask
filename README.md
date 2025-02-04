@@ -1,4 +1,4 @@
-## <a href="[zebomba-testtask.netlify.app/](https://zebomba-testtask.netlify.app/)">Zebomba Test</a>
+## <a href="https://zebomba-testtask.netlify.app/">Zebomba Test</a>
 
 # Task
 
