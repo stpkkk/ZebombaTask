@@ -1,5 +1,7 @@
 ## <a href="https://zebomba-testtask.netlify.app/">Zebomba Test</a>
 
+Время затраченное на выполнение тестового задания: 17 часов.
+
 # Task
 
 ![zebomba-task](https://github.com/stpkkk/ZebombaTask/blob/main/images/task.png)
